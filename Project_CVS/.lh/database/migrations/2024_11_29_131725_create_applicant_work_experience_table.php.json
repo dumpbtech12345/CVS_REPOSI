@@ -1,0 +1,30 @@
+{
+    "sourceFile": "database/migrations/2024_11_29_131725_create_applicant_work_experience_table.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1732886346058,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1732887265169,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,14 +9,12 @@\n     public function up()\n     {\n         Schema::create('applicant_work_experience', function (Blueprint $table) {\n             $table->id('experience_id'); // Primary Key\n-            $table->foreignId('applicant_id') // Foreign Key\n-                  ->constrained('applicant_personal_info')\n-                  ->onDelete('cascade');\n+            $table->foreignId('applicant_id')->constrained('applicant_personal_info')->onDelete('cascade'); // Foreign Key\n             $table->string('job_title');\n             $table->string('company_name');\n-            $table->string('location');\n+            $table->string('location')->nullable();\n             $table->date('start_date');\n             $table->date('end_date')->nullable();\n             $table->text('responsibilities')->nullable();\n             $table->timestamps();\n"
+                },
+                {
+                    "date": 1732887282853,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,26 +3,25 @@\n use Illuminate\\Database\\Migrations\\Migration;\n use Illuminate\\Database\\Schema\\Blueprint;\n use Illuminate\\Support\\Facades\\Schema;\n \n-class CreateApplicantWorkExperienceTable extends Migration\n+class CreateApplicantEducationTable extends Migration\n {\n     public function up()\n     {\n-        Schema::create('applicant_work_experience', function (Blueprint $table) {\n-            $table->id('experience_id'); // Primary Key\n+        Schema::create('applicant_education', function (Blueprint $table) {\n+            $table->id('education_id'); // Primary Key\n             $table->foreignId('applicant_id')->constrained('applicant_personal_info')->onDelete('cascade'); // Foreign Key\n-            $table->string('job_title');\n-            $table->string('company_name');\n-            $table->string('location')->nullable();\n+            $table->string('degree');\n+            $table->string('school_name');\n+            $table->string('field_of_study')->nullable();\n             $table->date('start_date');\n-            $table->date('end_date')->nullable();\n-            $table->text('responsibilities')->nullable();\n+            $table->date('graduation_date')->nullable();\n             $table->timestamps();\n         });\n     }\n \n     public function down()\n     {\n-        Schema::dropIfExists('applicant_work_experience');\n+        Schema::dropIfExists('applicant_education');\n     }\n }\n"
+                },
+                {
+                    "date": 1732887352330,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,25 +3,26 @@\n use Illuminate\\Database\\Migrations\\Migration;\n use Illuminate\\Database\\Schema\\Blueprint;\n use Illuminate\\Support\\Facades\\Schema;\n \n-class CreateApplicantEducationTable extends Migration\n+class CreateApplicantWorkExperienceTable extends Migration\n {\n     public function up()\n     {\n-        Schema::create('applicant_education', function (Blueprint $table) {\n-            $table->id('education_id'); // Primary Key\n+        Schema::create('applicant_work_experience', function (Blueprint $table) {\n+            $table->id('experience_id'); // Primary Key\n             $table->foreignId('applicant_id')->constrained('applicant_personal_info')->onDelete('cascade'); // Foreign Key\n-            $table->string('degree');\n-            $table->string('school_name');\n-            $table->string('field_of_study')->nullable();\n+            $table->string('job_title');\n+            $table->string('company_name');\n+            $table->string('location')->nullable();\n             $table->date('start_date');\n-            $table->date('graduation_date')->nullable();\n+            $table->date('end_date')->nullable();\n+            $table->text('responsibilities')->nullable();\n             $table->timestamps();\n         });\n     }\n \n     public function down()\n     {\n-        Schema::dropIfExists('applicant_education');\n+        Schema::dropIfExists('applicant_work_experience');\n     }\n }\n"
+                }
+            ],
+            "date": 1732886346058,
+            "name": "Commit-0",
+            "content": "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\nuse Illuminate\\Database\\Schema\\Blueprint;\nuse Illuminate\\Support\\Facades\\Schema;\n\nclass CreateApplicantWorkExperienceTable extends Migration\n{\n    public function up()\n    {\n        Schema::create('applicant_work_experience', function (Blueprint $table) {\n            $table->id('experience_id'); // Primary Key\n            $table->foreignId('applicant_id') // Foreign Key\n                  ->constrained('applicant_personal_info')\n                  ->onDelete('cascade');\n            $table->string('job_title');\n            $table->string('company_name');\n            $table->string('location');\n            $table->date('start_date');\n            $table->date('end_date')->nullable();\n            $table->text('responsibilities')->nullable();\n            $table->timestamps();\n        });\n    }\n\n    public function down()\n    {\n        Schema::dropIfExists('applicant_work_experience');\n    }\n}\n"
+        }
+    ]
+}

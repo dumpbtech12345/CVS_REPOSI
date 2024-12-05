@@ -1,0 +1,26 @@
+{
+    "sourceFile": "database/migrations/2024_11_29_000001_create_personal_infos_table.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1733147399979,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1733147446798,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,8 +17,9 @@\n             $table->string('linkedin_url')->nullable();\n             $table->string('address');\n             $table->string('Height');\n             $table->string('weight');\n+            $table->string('Marital Status');\n             $table->string('image')->nullable();\n             $table->string('Objective')->nullable();\n             $table->string('Facebook')->nullable();\n             $table->date('BirthDate')->nullable();\n"
+                },
+                {
+                    "date": 1733147489124,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n             $table->string('linkedin_url')->nullable();\n             $table->string('address');\n             $table->string('Height');\n             $table->string('weight');\n-            $table->string('Marital Status');\n+            $table->string('Marital_Status');\n             $table->string('image')->nullable();\n             $table->string('Objective')->nullable();\n             $table->string('Facebook')->nullable();\n             $table->date('BirthDate')->nullable();\n"
+                }
+            ],
+            "date": 1733147399979,
+            "name": "Commit-0",
+            "content": "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\nuse Illuminate\\Database\\Schema\\Blueprint;\nuse Illuminate\\Support\\Facades\\Schema;\n\nclass CreatePersonalInfosTable extends Migration\n{\n    public function up()\n    {\n        Schema::create('personal_infos', function (Blueprint $table) {\n            $table->id('id');\n            $table->string('first_name');\n            $table->string('last_name');\n            $table->string('email')->unique();\n            $table->string('phone');\n            $table->string('linkedin_url')->nullable();\n            $table->string('address');\n            $table->string('Height');\n            $table->string('weight');\n            $table->string('image')->nullable();\n            $table->string('Objective')->nullable();\n            $table->string('Facebook')->nullable();\n            $table->date('BirthDate')->nullable();\n            $table->timestamps();\n        });\n    }\n\n    public function down()\n    {\n        Schema::dropIfExists('personal_infos');\n    }\n}\n"
+        }
+    ]
+}

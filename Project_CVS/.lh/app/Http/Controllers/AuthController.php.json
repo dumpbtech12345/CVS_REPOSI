@@ -1,0 +1,18 @@
+{
+    "sourceFile": "app/Http/Controllers/AuthController.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1732857203565,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1732857203565,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Http\\Controllers;\n\nuse App\\Models\\UserSystem;\nuse Illuminate\\Http\\Request;\nuse Illuminate\\Support\\Facades\\Hash;\nuse Illuminate\\Support\\Facades\\Session;\n\nclass AuthController extends Controller\n{\n    /**\n     * Show the custom login form.\n     */\n    public function loginForm()\n    {\n        return view('auth.login_form'); // View for login\n    }\n\n    /**\n     * Handle login submission.\n     */\n    public function processLogin(Request $request)\n    {\n        // Validate the request\n        $request->validate([\n            'username' => 'required|string',\n            'password' => 'required|string',\n        ]);\n\n        // Find the user\n        $user = UserSystem::where('username', $request->username)->first();\n\n        if ($user && Hash::check($request->password, $user->password)) {\n            // Store user in session\n            Session::put('logged_in_user', $user);\n            return redirect()->route('dashboard.page')->with('success', 'Welcome back, ' . $user->firstname . '!');\n        }\n\n        // If login fails\n        return back()->withErrors(['login_error' => 'Invalid credentials.']);\n    }\n\n    /**\n     * Logout the user.\n     */\n    public function logoutUser()\n    {\n        Session::forget('logged_in_user'); // Clear session\n        return redirect()->route('auth.login_form')->with('success', 'Logged out successfully.');\n    }\n}\n"
+        }
+    ]
+}

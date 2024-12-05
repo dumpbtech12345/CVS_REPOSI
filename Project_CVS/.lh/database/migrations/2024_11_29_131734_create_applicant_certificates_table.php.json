@@ -1,0 +1,26 @@
+{
+    "sourceFile": "database/migrations/2024_11_29_131734_create_applicant_certificates_table.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1732886384452,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1732886393646,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,27 @@\n+<?php\n+\n+use Illuminate\\Database\\Migrations\\Migration;\n+use Illuminate\\Database\\Schema\\Blueprint;\n+use Illuminate\\Support\\Facades\\Schema;\n+\n+class CreateApplicantCertificatesTable extends Migration\n+{\n+    public function up()\n+    {\n+        Schema::create('applicant_certificates', function (Blueprint $table) {\n+            $table->id('certificate_id'); // Primary Key\n+            $table->foreignId('applicant_id') // Foreign Key\n+                  ->constrained('applicant_personal_info')\n+                  ->onDelete('cascade');\n+            $table->string('certificate_name');\n+            $table->string('issuing_organization');\n+            $table->date('issue_date');\n+            $table->timestamps();\n+        });\n+    }\n+\n+    public function down()\n+    {\n+        Schema::dropIfExists('applicant_certificates');\n+    }\n+}\n"
+                },
+                {
+                    "date": 1732887303354,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,11 +9,9 @@\n     public function up()\n     {\n         Schema::create('applicant_certificates', function (Blueprint $table) {\n             $table->id('certificate_id'); // Primary Key\n-            $table->foreignId('applicant_id') // Foreign Key\n-                  ->constrained('applicant_personal_info')\n-                  ->onDelete('cascade');\n+            $table->foreignId('applicant_id')->constrained('applicant_personal_info')->onDelete('cascade'); // Foreign Key\n             $table->string('certificate_name');\n             $table->string('issuing_organization');\n             $table->date('issue_date');\n             $table->timestamps();\n@@ -23,32 +21,5 @@\n     public function down()\n     {\n         Schema::dropIfExists('applicant_certificates');\n     }\n-}\n-<?php\n-\n-use Illuminate\\Database\\Migrations\\Migration;\n-use Illuminate\\Database\\Schema\\Blueprint;\n-use Illuminate\\Support\\Facades\\Schema;\n-\n-class CreateApplicantCertificatesTable extends Migration\n-{\n-    public function up()\n-    {\n-        Schema::create('applicant_certificates', function (Blueprint $table) {\n-            $table->id('certificate_id'); // Primary Key\n-            $table->foreignId('applicant_id') // Foreign Key\n-                  ->constrained('applicant_personal_info')\n-                  ->onDelete('cascade');\n-            $table->string('certificate_name');\n-            $table->string('issuing_organization');\n-            $table->date('issue_date');\n-            $table->timestamps();\n-        });\n-    }\n-\n-    public function down()\n-    {\n-        Schema::dropIfExists('applicant_certificates');\n-    }\n-}\n+}\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1732886384452,
+            "name": "Commit-0",
+            "content": "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\nuse Illuminate\\Database\\Schema\\Blueprint;\nuse Illuminate\\Support\\Facades\\Schema;\n\nclass CreateApplicantCertificatesTable extends Migration\n{\n    public function up()\n    {\n        Schema::create('applicant_certificates', function (Blueprint $table) {\n            $table->id('certificate_id'); // Primary Key\n            $table->foreignId('applicant_id') // Foreign Key\n                  ->constrained('applicant_personal_info')\n                  ->onDelete('cascade');\n            $table->string('certificate_name');\n            $table->string('issuing_organization');\n            $table->date('issue_date');\n            $table->timestamps();\n        });\n    }\n\n    public function down()\n    {\n        Schema::dropIfExists('applicant_certificates');\n    }\n}\n"
+        }
+    ]
+}

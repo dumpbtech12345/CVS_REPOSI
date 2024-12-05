@@ -1,0 +1,18 @@
+{
+    "sourceFile": "app/Http/Kernel.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1733163653419,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1733163653419,
+            "name": "Commit-0",
+            "content": "<?php\r\n\r\nnamespace App\\Http;\r\n\r\nuse Illuminate\\Foundation\\Http\\Kernel as HttpKernel;\r\n\r\nclass Kernel extends HttpKernel\r\n{\r\n    /**\r\n     * The application's global HTTP middleware stack.\r\n     *\r\n     * These middleware will run during every request to your application.\r\n     *\r\n     * @var array\r\n     */\r\n    protected $middleware = [\r\n        \\Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode::class,\r\n        \\Illuminate\\Http\\Middleware\\TrustProxies::class,\r\n        \\Illuminate\\Session\\Middleware\\StartSession::class,\r\n        \\Illuminate\\View\\Middleware\\ShareErrorsFromSession::class,\r\n        \\Illuminate\\Routing\\Middleware\\SubstituteBindings::class,\r\n    ];\r\n\r\n    /**\r\n     * The application's route middleware.\r\n     *\r\n     * These middleware may be assigned to groups or used individually.\r\n     *\r\n     * @var array\r\n     */\r\n    protected $routeMiddleware = [\r\n        'auth' => \\App\\Http\\Middleware\\Authenticate::class,\r\n        'auth.user' => \\App\\Http\\Middleware\\AuthenticateUser::class, // your custom middleware\r\n        // Add any other middleware here\r\n    ];\r\n}\r\n"
+        }
+    ]
+}

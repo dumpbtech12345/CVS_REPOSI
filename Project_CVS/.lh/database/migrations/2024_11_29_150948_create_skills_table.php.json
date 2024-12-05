@@ -1,0 +1,18 @@
+{
+    "sourceFile": "database/migrations/2024_11_29_150948_create_skills_table.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1732893209830,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1732893209830,
+            "name": "Commit-0",
+            "content": "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\nuse Illuminate\\Database\\Schema\\Blueprint;\nuse Illuminate\\Support\\Facades\\Schema;\n\nclass CreateSkillsTable extends Migration\n{\n    public function up()\n    {\n        Schema::create('skills', function (Blueprint $table) {\n            $table->id('id');\n            $table->foreignId('personal_info_id')->constrained('personal_infos')->onDelete('cascade');\n            $table->string('name');\n            $table->timestamps();\n        });\n    }\n\n    public function down()\n    {\n        Schema::dropIfExists('skills');\n    }\n}"
+        }
+    ]
+}

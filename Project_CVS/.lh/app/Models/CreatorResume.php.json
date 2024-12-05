@@ -1,0 +1,58 @@
+{
+    "sourceFile": "app/Models/CreatorResume.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 10,
+            "patches": [
+                {
+                    "date": 1733158580613,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1733158730427,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,7 +25,7 @@\n     }\n \n     public function creator()\n     {\n-        return $this->belongsTo(User::class, 'Created_by');\n+        return $this->belongsTo(UserSystem::class, 'Created_by');\n     }\n }\n"
+                },
+                {
+                    "date": 1733164956292,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,7 +25,7 @@\n     }\n \n     public function creator()\n     {\n-        return $this->belongsTo(UserSystem::class, 'Created_by');\n+        return $this->belongsTo(UserSystem::class);\n     }\n }\n"
+                },
+                {
+                    "date": 1733282453701,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,20 +12,17 @@\n     protected $table = '_creator_resume';\n \n     protected $fillable = [\n         'personal_info_id',\n-        'Created_by',\n         'Link',\n         'Status',\n+        `application_link`,\n     ];\n \n     // Relationships\n     public function personalInfo()\n     {\n         return $this->belongsTo(PersonalInfo::class);\n     }\n \n-    public function creator()\n-    {\n-        return $this->belongsTo(UserSystem::class);\n-    }\n+   \n }\n"
+                },
+                {
+                    "date": 1733282463359,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n     protected $fillable = [\n         'personal_info_id',\n         'Link',\n         'Status',\n-        `application_link`,\n+        'application_link',\n     ];\n \n     // Relationships\n     public function personalInfo()\n"
+                },
+                {
+                    "date": 1733283684039,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,8 +15,10 @@\n         'personal_info_id',\n         'Link',\n         'Status',\n         'application_link',\n+        'link_type',       // New field\n+        'scheduled_date',  // New field\n     ];\n \n     // Relationships\n     public function personalInfo()\n"
+                },
+                {
+                    "date": 1733284052859,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,30 @@\n+<?php\n+\n+namespace App\\Models;\n+\n+use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\n+use Illuminate\\Database\\Eloquent\\Model;\n+\n+class CreatorResume extends Model\n+{\n+    use HasFactory;\n+\n+    protected $table = '_creator_resume';\n+\n+    protected $fillable = [\n+        'personal_info_id',\n+        'Link',\n+        'Status',\n+        'application_link',\n+        'link_type',       // New field\n+        'scheduled_date',  // New field\n+    ];\n+\n+    // Relationships\n+    public function personalInfo()\n+    {\n+        return $this->belongsTo(PersonalInfo::class);\n+    }\n+\n+   \n+}\n"
+                },
+                {
+                    "date": 1733298867525,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,36 +25,13 @@\n     {\n         return $this->belongsTo(PersonalInfo::class);\n     }\n \n-   \n-}\n-<?php\n \n-namespace App\\Models;\n-\n-use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\n-use Illuminate\\Database\\Eloquent\\Model;\n-\n-class CreatorResume extends Model\n-{\n-    use HasFactory;\n-\n-    protected $table = '_creator_resume';\n-\n-    protected $fillable = [\n-        'personal_info_id',\n-        'Link',\n-        'Status',\n-        'application_link',\n-        'link_type',       // New field\n-        'scheduled_date',  // New field\n-    ];\n-\n     // Relationships\n-    public function personalInfo()\n+    public function Creator()\n     {\n-        return $this->belongsTo(PersonalInfo::class);\n+        return $this->belongsTo(UserSystem::class);\n     }\n \n    \n }\n"
+                },
+                {
+                    "date": 1733299010523,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,9 +27,9 @@\n     }\n \n \n     // Relationships\n-    public function Creator()\n+    public function UserSystem()\n     {\n         return $this->belongsTo(UserSystem::class);\n     }\n \n"
+                },
+                {
+                    "date": 1733299130906,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,8 +17,9 @@\n         'Status',\n         'application_link',\n         'link_type',       // New field\n         'scheduled_date',  // New field\n+        'CreatorResume',\n     ];\n \n     // Relationships\n     public function personalInfo()\n"
+                },
+                {
+                    "date": 1733299200187,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,14 +12,15 @@\n     protected $table = '_creator_resume';\n \n     protected $fillable = [\n         'personal_info_id',\n+        'CreatorResume',\n         'Link',\n         'Status',\n         'application_link',\n         'link_type',       // New field\n         'scheduled_date',  // New field\n-        'CreatorResume',\n+        \n     ];\n \n     // Relationships\n     public function personalInfo()\n"
+                }
+            ],
+            "date": 1733158580613,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Models;\n\nuse Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\nuse Illuminate\\Database\\Eloquent\\Model;\n\nclass CreatorResume extends Model\n{\n    use HasFactory;\n\n    protected $table = '_creator_resume';\n\n    protected $fillable = [\n        'personal_info_id',\n        'Created_by',\n        'Link',\n        'Status',\n    ];\n\n    // Relationships\n    public function personalInfo()\n    {\n        return $this->belongsTo(PersonalInfo::class);\n    }\n\n    public function creator()\n    {\n        return $this->belongsTo(User::class, 'Created_by');\n    }\n}\n"
+        }
+    ]
+}

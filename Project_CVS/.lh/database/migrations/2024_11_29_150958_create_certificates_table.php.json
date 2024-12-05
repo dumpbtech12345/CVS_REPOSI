@@ -1,0 +1,18 @@
+{
+    "sourceFile": "database/migrations/2024_11_29_150958_create_certificates_table.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1732893265719,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1732893265719,
+            "name": "Commit-0",
+            "content": "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\nuse Illuminate\\Database\\Schema\\Blueprint;\nuse Illuminate\\Support\\Facades\\Schema;\n\nclass CreateCertificatesTable extends Migration\n{\n    public function up()\n    {\n        Schema::create('certificates', function (Blueprint $table) {\n            $table->id('id');\n            $table->foreignId('personal_info_id')->constrained('personal_infos')->onDelete('cascade');\n            $table->string('name');\n            $table->string('issuing_organization');\n            $table->date('issue_date');\n            $table->timestamps();\n        });\n    }\n\n    public function down()\n    {\n        Schema::dropIfExists('certificates');\n    }\n}\n"
+        }
+    ]
+}

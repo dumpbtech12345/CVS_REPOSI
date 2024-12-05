@@ -1,0 +1,18 @@
+{
+    "sourceFile": "app/Http/Controllers/PersonalInfoController.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1732896284840,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1732896284840,
+            "name": "Commit-0",
+            "content": "<?php\nnamespace App\\Http\\Controllers;\n\nuse App\\Models\\PersonalInfo;\nuse Illuminate\\Http\\Request;\n\nclass PersonalInfoController extends Controller\n{\n    public function index()\n    {\n        $personalInfos = PersonalInfo::with(['skills', 'workExperiences', 'educations', 'certificates'])->get();\n        return response()->json($personalInfos);\n    }\n\n    public function store(Request $request)\n    {\n        $validated = $request->validate([\n            'first_name' => 'required|string|max:255',\n            'last_name' => 'required|string|max:255',\n            'email' => 'required|email|unique:personal_infos,email',\n            'phone' => 'required|string|max:20',\n            'linkedin_url' => 'nullable|url',\n            'address' => 'required|string',\n        ]);\n\n        $personalInfo = PersonalInfo::create($validated);\n\n        return response()->json(['message' => 'Personal Info created successfully', 'data' => $personalInfo]);\n    }\n\n    public function show(PersonalInfo $personalInfo)\n    {\n        $personalInfo->load(['skills', 'workExperiences', 'educations', 'certificates']);\n        return response()->json($personalInfo);\n    }\n\n    public function update(Request $request, PersonalInfo $personalInfo)\n    {\n        $validated = $request->validate([\n            'first_name' => 'sometimes|required|string|max:255',\n            'last_name' => 'sometimes|required|string|max:255',\n            'email' => 'sometimes|required|email|unique:personal_infos,email,' . $personalInfo->id,\n            'phone' => 'sometimes|required|string|max:20',\n            'linkedin_url' => 'nullable|url',\n            'address' => 'sometimes|required|string',\n        ]);\n\n        $personalInfo->update($validated);\n\n        return response()->json(['message' => 'Personal Info updated successfully', 'data' => $personalInfo]);\n    }\n\n    public function destroy(PersonalInfo $personalInfo)\n    {\n        $personalInfo->delete();\n\n        return response()->json(['message' => 'Personal Info deleted successfully']);\n    }\n}\n"
+        }
+    ]
+}

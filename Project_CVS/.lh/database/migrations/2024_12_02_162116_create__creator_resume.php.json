@@ -1,0 +1,26 @@
+{
+    "sourceFile": "database/migrations/2024_12_02_162116_create__creator_resume.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1733157070452,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1733157124511,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,11 @@\n     {\n         Schema::create('_creator_resume', function (Blueprint $table) {\n             $table->id();\n             $table->foreignId('personal_info_id')->constrained('personal_infos')->onDelete('cascade');\n-            $table->foreignId('UserCreator')->constrained('user_system')->onDelete('cascade');\n+            $table->foreignId('Created_by')->constrained('user_system')->onDelete('cascade');\n+            $table->string('Link');\n+            $table->string('Status');\n             $table->timestamps();\n         });\n     }\n \n"
+                },
+                {
+                    "date": 1733157346061,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,5 +27,5 @@\n     public function down(): void\n     {\n         Schema::dropIfExists('_creator_resume');\n     }\n-};\n+};     \n"
+                }
+            ],
+            "date": 1733157070452,
+            "name": "Commit-0",
+            "content": "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\nuse Illuminate\\Database\\Schema\\Blueprint;\nuse Illuminate\\Support\\Facades\\Schema;\n\nreturn new class extends Migration\n{\n    /**\n     * Run the migrations.\n     */\n    public function up(): void\n    {\n        Schema::create('_creator_resume', function (Blueprint $table) {\n            $table->id();\n            $table->foreignId('personal_info_id')->constrained('personal_infos')->onDelete('cascade');\n            $table->foreignId('UserCreator')->constrained('user_system')->onDelete('cascade');\n            $table->timestamps();\n        });\n    }\n\n    /**\n     * Reverse the migrations.\n     */\n    public function down(): void\n    {\n        Schema::dropIfExists('_creator_resume');\n    }\n};\n"
+        }
+    ]
+}

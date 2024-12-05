@@ -1,0 +1,38 @@
+{
+    "sourceFile": "app/Models/Education.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 5,
+            "patches": [
+                {
+                    "date": 1732894497723,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1732906870123,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,29 +1,27 @@\n <?php\n \n namespace App\\Models;\n \n-use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\n use Illuminate\\Database\\Eloquent\\Model;\n \n class Education extends Model\n {\n     use HasFactory;\n \n     protected $fillable = [\n         'personal_info_id',\n+        'name',\n         'degree',\n         'school_name',\n         'field_of_study',\n         'start_date',\n         'graduation_date',\n+\n+\n     ];\n \n-    /**\n-     * Define a relationship to the PersonalInfo model.\n-     */\n     public function personalInfo()\n     {\n         return $this->belongsTo(PersonalInfo::class);\n     }\n }\n-\n"
+                },
+                {
+                    "date": 1732908608188,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,29 @@\n+<?php\n+\n+\n+namespace App\\Models;\n+\n+use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\n+use Illuminate\\Database\\Eloquent\\Model;\n+\n+class Education extends Model\n+{\n+    use HasFactory;\n+\n+    protected $fillable = [\n+        'personal_info_id',\n+        'name',\n+        'degree',\n+        'school_name',\n+        'field_of_study',\n+        'start_date',\n+        'graduation_date',\n+\n+\n+    ];\n+\n+    public function personalInfo()\n+    {\n+        return $this->belongsTo(PersonalInfo::class);\n+    }\n+}\n"
+                },
+                {
+                    "date": 1732908828357,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,8 +9,9 @@\n class Education extends Model\n {\n     use HasFactory;\n \n+    protected $table = 'educations';\n     protected $fillable = [\n         'personal_info_id',\n         'name',\n         'degree',\n@@ -26,31 +27,4 @@\n     {\n         return $this->belongsTo(PersonalInfo::class);\n     }\n }\n-<?php\n-\n-namespace App\\Models;\n-\n-use Illuminate\\Database\\Eloquent\\Model;\n-\n-class Education extends Model\n-{\n-    use HasFactory;\n-\n-    protected $fillable = [\n-        'personal_info_id',\n-        'name',\n-        'degree',\n-        'school_name',\n-        'field_of_study',\n-        'start_date',\n-        'graduation_date',\n-\n-\n-    ];\n-\n-    public function personalInfo()\n-    {\n-        return $this->belongsTo(PersonalInfo::class);\n-    }\n-}\n"
+                },
+                {
+                    "date": 1732952134463,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,8 +10,9 @@\n {\n     use HasFactory;\n \n     protected $table = 'educations';\n+    \n     protected $fillable = [\n         'personal_info_id',\n         'name',\n         'degree',\n"
+                },
+                {
+                    "date": 1732972827054,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n         'personal_info_id',\n         'name',\n         'degree',\n         'school_name',\n-        'field_of_study',\n+        'Educlevel',\n         'start_date',\n         'graduation_date',\n \n \n"
+                }
+            ],
+            "date": 1732894497723,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Models;\n\nuse Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\nuse Illuminate\\Database\\Eloquent\\Model;\n\nclass Education extends Model\n{\n    use HasFactory;\n\n    protected $fillable = [\n        'personal_info_id',\n        'degree',\n        'school_name',\n        'field_of_study',\n        'start_date',\n        'graduation_date',\n    ];\n\n    /**\n     * Define a relationship to the PersonalInfo model.\n     */\n    public function personalInfo()\n    {\n        return $this->belongsTo(PersonalInfo::class);\n    }\n}\n\n"
+        }
+    ]
+}

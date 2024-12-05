@@ -1,0 +1,22 @@
+{
+    "sourceFile": "database/migrations/2024_11_29_150949_create_work_experiences_table.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1732893169118,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1732893228999,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,21 +3,26 @@\n use Illuminate\\Database\\Migrations\\Migration;\n use Illuminate\\Database\\Schema\\Blueprint;\n use Illuminate\\Support\\Facades\\Schema;\n \n-class CreateSkillsTable extends Migration\n+class CreateWorkExperiencesTable extends Migration\n {\n     public function up()\n     {\n-        Schema::create('skills', function (Blueprint $table) {\n+        Schema::create('work_experiences', function (Blueprint $table) {\n             $table->id('id');\n             $table->foreignId('personal_info_id')->constrained('personal_infos')->onDelete('cascade');\n-            $table->string('name');\n+            $table->string('job_title');\n+            $table->string('company_name');\n+            $table->string('location');\n+            $table->date('start_date');\n+            $table->date('end_date')->nullable();\n+            $table->text('responsibilities');\n             $table->timestamps();\n         });\n     }\n \n     public function down()\n     {\n-        Schema::dropIfExists('skills');\n+        Schema::dropIfExists('work_experiences');\n     }\n }\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1732893169118,
+            "name": "Commit-0",
+            "content": "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\nuse Illuminate\\Database\\Schema\\Blueprint;\nuse Illuminate\\Support\\Facades\\Schema;\n\nclass CreateSkillsTable extends Migration\n{\n    public function up()\n    {\n        Schema::create('skills', function (Blueprint $table) {\n            $table->id('id');\n            $table->foreignId('personal_info_id')->constrained('personal_infos')->onDelete('cascade');\n            $table->string('name');\n            $table->timestamps();\n        });\n    }\n\n    public function down()\n    {\n        Schema::dropIfExists('skills');\n    }\n}"
+        }
+    ]
+}

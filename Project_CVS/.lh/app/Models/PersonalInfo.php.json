@@ -1,0 +1,62 @@
+{
+    "sourceFile": "app/Models/PersonalInfo.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 11,
+            "patches": [
+                {
+                    "date": 1732894324214,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1733024042802,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,8 +15,12 @@\n         'email',\n         'phone',\n         'linkedin_url',\n         'address',\n+        'Image',\n+        'Objective',\n+        'Facebook',\n+        'BirthDate',\n     ];\n \n     public function skills()\n     {\n"
+                },
+                {
+                    "date": 1733024114697,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,15 +8,21 @@\n class PersonalInfo extends Model\n {\n     use HasFactory;\n \n+\n+\n+\n+\n     protected $fillable = [\n         'first_name',\n         'last_name',\n         'email',\n         'phone',\n         'linkedin_url',\n         'address',\n+\n+        // added this\n         'Image',\n         'Objective',\n         'Facebook',\n         'BirthDate',\n"
+                },
+                {
+                    "date": 1733024456155,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,12 +21,12 @@\n         'linkedin_url',\n         'address',\n \n         // added this\n-        'Image',\n-        'Objective',\n-        'Facebook',\n-        'BirthDate',\n+        'Image', // varchar255\n+        'Objective',  //varchar255\n+        'Facebook', //varchar255\n+        'BirthDate', // Date\n     ];\n \n     public function skills()\n     {\n"
+                },
+                {
+                    "date": 1733025784778,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n         'linkedin_url',\n         'address',\n \n         // added this\n-        'Image', // varchar255\n+       \n         'Objective',  //varchar255\n         'Facebook', //varchar255\n         'BirthDate', // Date\n     ];\n"
+                },
+                {
+                    "date": 1733071676212,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n         'linkedin_url',\n         'address',\n \n         // added this\n-       \n+        'image',\n         'Objective',  //varchar255\n         'Facebook', //varchar255\n         'BirthDate', // Date\n     ];\n"
+                },
+                {
+                    "date": 1733071686222,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n         'linkedin_url',\n         'address',\n \n         // added this\n-        'image',\n+        'image', //varchar255\n         'Objective',  //varchar255\n         'Facebook', //varchar255\n         'BirthDate', // Date\n     ];\n"
+                },
+                {
+                    "date": 1733147724268,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,8 +25,12 @@\n         'image', //varchar255\n         'Objective',  //varchar255\n         'Facebook', //varchar255\n         'BirthDate', // Date\n+        'Height', // DECI\n+        'weight',\n+        'Marital_Status',\n+      \n     ];\n \n     public function skills()\n     {\n"
+                },
+                {
+                    "date": 1733147750261,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,10 +26,10 @@\n         'Objective',  //varchar255\n         'Facebook', //varchar255\n         'BirthDate', // Date\n         'Height', // DECI\n-        'weight',\n-        'Marital_Status',\n+        'weight',// DECI\n+        'Marital_Status',// VARCHAR255\n       \n     ];\n \n     public function skills()\n"
+                },
+                {
+                    "date": 1733158656854,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -50,5 +50,10 @@\n     public function certificates()\n     {\n         return $this->hasMany(Certificate::class);\n     }\n+\n+    public function certificates()\n+    {\n+        return $this->hasMany(CreatorResume::class);\n+    }\n }\n"
+                },
+                {
+                    "date": 1733158680483,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -51,9 +51,9 @@\n     {\n         return $this->hasMany(Certificate::class);\n     }\n \n-    public function certificates()\n+    public function creatorResume()\n     {\n         return $this->hasMany(CreatorResume::class);\n     }\n }\n"
+                },
+                {
+                    "date": 1733164989548,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -51,9 +51,9 @@\n     {\n         return $this->hasMany(Certificate::class);\n     }\n \n-    public function creatorResume()\n+    public function CreatorResume()\n     {\n         return $this->hasMany(CreatorResume::class);\n     }\n }\n"
+                }
+            ],
+            "date": 1732894324214,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Models;\n\nuse Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\nuse Illuminate\\Database\\Eloquent\\Model;\n\nclass PersonalInfo extends Model\n{\n    use HasFactory;\n\n    protected $fillable = [\n        'first_name',\n        'last_name',\n        'email',\n        'phone',\n        'linkedin_url',\n        'address',\n    ];\n\n    public function skills()\n    {\n        return $this->hasMany(Skill::class);\n    }\n\n    public function workExperiences()\n    {\n        return $this->hasMany(WorkExperience::class);\n    }\n\n    public function educations()\n    {\n        return $this->hasMany(Education::class);\n    }\n\n    public function certificates()\n    {\n        return $this->hasMany(Certificate::class);\n    }\n}\n"
+        }
+    ]
+}

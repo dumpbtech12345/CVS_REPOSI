@@ -1,0 +1,34 @@
+{
+    "sourceFile": "database/migrations/2024_11_29_131723_create_applicant_personal_info_table.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1732886302028,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1732886404515,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,27 @@\n+<?php\n+\n+use Illuminate\\Database\\Migrations\\Migration;\n+use Illuminate\\Database\\Schema\\Blueprint;\n+use Illuminate\\Support\\Facades\\Schema;\n+\n+class CreateApplicantPersonalInfoTable extends Migration\n+{\n+    public function up()\n+    {\n+        Schema::create('applicant_personal_info', function (Blueprint $table) {\n+            $table->id('applicant_id'); // Primary Key\n+            $table->string('first_name');\n+            $table->string('last_name');\n+            $table->string('email')->unique();\n+            $table->string('phone');\n+            $table->string('linkedin_url')->nullable();\n+            $table->string('address');\n+            $table->timestamps();\n+        });\n+    }\n+\n+    public function down()\n+    {\n+        Schema::dropIfExists('applicant_personal_info');\n+    }\n+}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1732887194215,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,5 @@\n <?php\n-\n use Illuminate\\Database\\Migrations\\Migration;\n use Illuminate\\Database\\Schema\\Blueprint;\n use Illuminate\\Support\\Facades\\Schema;\n \n@@ -12,43 +11,16 @@\n             $table->id('applicant_id'); // Primary Key\n             $table->string('first_name');\n             $table->string('last_name');\n             $table->string('email')->unique();\n-            $table->string('phone');\n+            $table->string('phone')->nullable();\n             $table->string('linkedin_url')->nullable();\n-            $table->string('address');\n-            $table->timestamps();\n+            $table->string('address')->nullable();\n+            $table->timestamps(); // For created_at and updated_at\n         });\n     }\n \n     public function down()\n     {\n         Schema::dropIfExists('applicant_personal_info');\n     }\n }\n-<?php\n-\n-use Illuminate\\Database\\Migrations\\Migration;\n-use Illuminate\\Database\\Schema\\Blueprint;\n-use Illuminate\\Support\\Facades\\Schema;\n-\n-class CreateApplicantPersonalInfoTable extends Migration\n-{\n-    public function up()\n-    {\n-        Schema::create('applicant_personal_info', function (Blueprint $table) {\n-            $table->id('applicant_id'); // Primary Key\n-            $table->string('first_name');\n-            $table->string('last_name');\n-            $table->string('email')->unique();\n-            $table->string('phone');\n-            $table->string('linkedin_url')->nullable();\n-            $table->string('address');\n-            $table->timestamps();\n-        });\n-    }\n-\n-    public function down()\n-    {\n\\ No newline at end of file\n-        Schema::dropIfExists('applicant_personal_info');\n-    }\n-}\n"
+                },
+                {
+                    "date": 1732889516730,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n {\n     public function up()\n     {\n         Schema::create('applicant_personal_info', function (Blueprint $table) {\n-            $table->id('applicant_id'); // Primary Key\n+            $table->id(); // Primary Key\n             $table->string('first_name');\n             $table->string('last_name');\n             $table->string('email')->unique();\n             $table->string('phone')->nullable();\n"
+                },
+                {
+                    "date": 1732891774508,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n {\n     public function up()\n     {\n         Schema::create('applicant_personal_info', function (Blueprint $table) {\n-            $table->id(); // Primary Key\n+            $table->id('applicant_id'); // Primary Key\n             $table->string('first_name');\n             $table->string('last_name');\n             $table->string('email')->unique();\n             $table->string('phone')->nullable();\n"
+                }
+            ],
+            "date": 1732886302028,
+            "name": "Commit-0",
+            "content": "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\nuse Illuminate\\Database\\Schema\\Blueprint;\nuse Illuminate\\Support\\Facades\\Schema;\n\nclass CreateApplicantPersonalInfoTable extends Migration\n{\n    public function up()\n    {\n        Schema::create('applicant_personal_info', function (Blueprint $table) {\n            $table->id('applicant_id'); // Primary Key\n            $table->string('first_name');\n            $table->string('last_name');\n            $table->string('email')->unique();\n            $table->string('phone');\n            $table->string('linkedin_url')->nullable();\n            $table->string('address');\n            $table->timestamps();\n        });\n    }\n\n    public function down()\n    {\n        Schema::dropIfExists('applicant_personal_info');\n    }\n}"
+        }
+    ]
+}

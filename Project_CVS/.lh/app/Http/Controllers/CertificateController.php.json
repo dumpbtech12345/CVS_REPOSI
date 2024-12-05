@@ -1,0 +1,18 @@
+{
+    "sourceFile": "app/Http/Controllers/CertificateController.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1732896388739,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1732896388739,
+            "name": "Commit-0",
+            "content": "<?php\nnamespace App\\Http\\Controllers;\n\nuse App\\Models\\Certificate;\nuse Illuminate\\Http\\Request;\n\nclass CertificateController extends Controller\n{\n    public function index()\n    {\n        $certificates = Certificate::with('personalInfo')->get();\n        return response()->json($certificates);\n    }\n\n    public function store(Request $request)\n    {\n        $validated = $request->validate([\n            'personal_info_id' => 'required|exists:personal_infos,id',\n            'name' => 'required|string|max:255',\n            'issuing_organization' => 'required|string|max:255',\n            'issue_date' => 'required|date',\n        ]);\n\n        $certificate = Certificate::create($validated);\n\n        return response()->json(['message' => 'Certificate created successfully', 'data' => $certificate]);\n    }\n\n    public function show(Certificate $certificate)\n    {\n        $certificate->load('personalInfo');\n        return response()->json($certificate);\n    }\n\n    public function update(Request $request, Certificate $certificate)\n    {\n        $validated = $request->validate([\n            'name' => 'sometimes|required|string|max:255',\n            'issuing_organization' => 'sometimes|required|string|max:255',\n            'issue_date' => 'sometimes|required|date',\n        ]);\n\n        $certificate->update($validated);\n\n        return response()->json(['message' => 'Certificate updated successfully', 'data' => $certificate]);\n    }\n\n    public function destroy(Certificate $certificate)\n    {\n        $certificate->delete();\n\n        return response()->json(['message' => 'Certificate deleted successfully']);\n    }\n}"
+        }
+    ]
+}

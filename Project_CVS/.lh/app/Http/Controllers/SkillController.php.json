@@ -1,0 +1,18 @@
+{
+    "sourceFile": "app/Http/Controllers/SkillController.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1732896329431,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1732896329431,
+            "name": "Commit-0",
+            "content": "<?php\nnamespace App\\Http\\Controllers;\n\nuse App\\Models\\Skill;\nuse Illuminate\\Http\\Request;\n\nclass SkillController extends Controller\n{\n    public function index()\n    {\n        $skills = Skill::with('personalInfo')->get();\n        return response()->json($skills);\n    }\n\n    public function store(Request $request)\n    {\n        $validated = $request->validate([\n            'personal_info_id' => 'required|exists:personal_infos,id',\n            'name' => 'required|string|max:255',\n        ]);\n\n        $skill = Skill::create($validated);\n\n        return response()->json(['message' => 'Skill created successfully', 'data' => $skill]);\n    }\n\n    public function show(Skill $skill)\n    {\n        $skill->load('personalInfo');\n        return response()->json($skill);\n    }\n\n    public function update(Request $request, Skill $skill)\n    {\n        $validated = $request->validate([\n            'name' => 'sometimes|required|string|max:255',\n        ]);\n\n        $skill->update($validated);\n\n        return response()->json(['message' => 'Skill updated successfully', 'data' => $skill]);\n    }\n\n    public function destroy(Skill $skill)\n    {\n        $skill->delete();\n\n        return response()->json(['message' => 'Skill deleted successfully']);\n    }\n}\n"
+        }
+    ]
+}

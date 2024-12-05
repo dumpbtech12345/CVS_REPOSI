@@ -1,0 +1,42 @@
+{
+    "sourceFile": "app/Models/UserSystem.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 6,
+            "patches": [
+                {
+                    "date": 1732855598711,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1732863553743,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,8 +17,9 @@\n         'username',\n         'password',\n         'email',\n         'number',\n+        'role', \n     ];\n \n     protected $hidden = [\n         'password', // Ensure the password is not returned when the model is serialized\n"
+                },
+                {
+                    "date": 1733158713383,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,5 +23,11 @@\n \n     protected $hidden = [\n         'password', // Ensure the password is not returned when the model is serialized\n     ];\n+\n+\n+    public function creatorResume()\n+    {\n+        return $this->hasMany(CreatorResume::class);\n+    }\n }\n"
+                },
+                {
+                    "date": 1733292799579,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,9 +25,6 @@\n         'password', // Ensure the password is not returned when the model is serialized\n     ];\n \n \n-    public function creatorResume()\n-    {\n-        return $this->hasMany(CreatorResume::class);\n-    }\n+   \n }\n"
+                },
+                {
+                    "date": 1733298938192,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,7 +24,12 @@\n     protected $hidden = [\n         'password', // Ensure the password is not returned when the model is serialized\n     ];\n \n+    public function CreatorResume()\n+    {\n+        return $this->hasMany(CreatorResume::class);\n+    }\n \n+\n    \n }\n"
+                },
+                {
+                    "date": 1733298974357,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,9 @@\n     protected $hidden = [\n         'password', // Ensure the password is not returned when the model is serialized\n     ];\n \n-    public function CreatorResume()\n+    public function Creatorresume()\n     {\n         return $this->hasMany(CreatorResume::class);\n     }\n \n"
+                },
+                {
+                    "date": 1733299050126,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,9 @@\n     protected $hidden = [\n         'password', // Ensure the password is not returned when the model is serialized\n     ];\n \n-    public function Creatorresume()\n+    public function CreatorResumes()\n     {\n         return $this->hasMany(CreatorResume::class);\n     }\n \n"
+                }
+            ],
+            "date": 1732855598711,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Models;\n\nuse Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\nuse Illuminate\\Database\\Eloquent\\Model;\n\nclass UserSystem extends Model\n{\n    use HasFactory;\n\n    protected $table = 'user_system';\n\n    protected $fillable = [\n        'firstname',\n        'lastname',\n        'username',\n        'password',\n        'email',\n        'number',\n    ];\n\n    protected $hidden = [\n        'password', // Ensure the password is not returned when the model is serialized\n    ];\n}\n"
+        }
+    ]
+}
